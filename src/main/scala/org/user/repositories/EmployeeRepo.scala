@@ -13,6 +13,8 @@ import org.utils.JsonUtils
 import scala.concurrent.Future
 
 object EmployeeRepo extends JsonUtils {
+
+  //Object to
   private val employeeDoc: MongoCollection[Employee] = DbConfig.employees
 
   def createCollection(): Unit = {

@@ -12,10 +12,10 @@ import scala.collection.JavaConverters.seqAsJavaListConverter
 
 object DbConfig {
 
-  val user: String = "root"
-  val password: Array[Char] = "example".toCharArray
-  val source: String = "admin"
-  private val credential: MongoCredential = createCredential(user, source, password)
+//  val user: String = "root"
+//  val password: Array[Char] = "example".toCharArray
+//  val source: String = "admin"
+//  private val credential: MongoCredential = createCredential(user, source, password)
 
   import org.bson.codecs.configuration.CodecRegistries
   import org.bson.codecs.configuration.CodecRegistries._
@@ -32,13 +32,13 @@ object DbConfig {
 
   val settings: MongoClientSettings = MongoClientSettings.builder()
     .applyToClusterSettings(b => b.hosts(List(new ServerAddress("localhost")).asJava))
-    .credential(credential)
+//    .credential(credential)
     .codecRegistry(fromRegistries(registry, javaCodecs, DEFAULT_CODEC_REGISTRY))
     .build()
 
   val client: MongoClient = MongoClient(settings)
 
-  val database: MongoDatabase = client.getDatabase("test")
+  val database: MongoDatabase = client.getDatabase("ScalaTraining")
 
   val employees: MongoCollection[Employee] = database.getCollection("employee")
 

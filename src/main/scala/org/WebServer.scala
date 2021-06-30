@@ -23,12 +23,15 @@ object WebServer extends App {
       )
     }
   }
+
+
   val serverFuture = Http().bindAndHandle(routes, "localhost", 8080)
 
-  println("Server started ...")
+  println("Server started Without any errors")
   StdIn.readLine()
   serverFuture
     .flatMap(_.unbind())
     .onComplete(_ => system.terminate())
+  println("Server exited")
 }
 
